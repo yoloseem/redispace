@@ -64,13 +64,9 @@ class RedisBlock(object):
             return name, node
         return node
 
-    def _get_client_by_rotation(self):
-        return self._get_node_by_rotation(with_name=False).client
-
     def execute(self, command, *args, **kwargs):
-        client = self._get_client_by_rotation()
-        f = getattr(client, command)
-        return f(*args, **kwargs)
+        name, node = self._get_node_by_rotation()
+        return node.execute(command, *args, **kwargs)
 
 
 class Redispace(object):

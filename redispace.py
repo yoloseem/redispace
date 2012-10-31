@@ -1,7 +1,10 @@
 """:mod:`redispace` --- redispace
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-redispace is a Redis client based on redis-py.
+redispace is a `Redis`_ client based on `redis-py`_.
+
+.. _Redis: http://redis.io/
+.. _redis-py: https://github.com/andymccurdy/redis-py
 
 """
 
@@ -15,7 +18,7 @@ __slots__ = ('RedisNode', 'RedisBlock', 'RedisCluster', )
 
 
 class RedisNode(object):
-    """Redis node class using `redis.StrictRedis`.
+    """Redis node class using :class:`redis.StrictRedis`.
     
     """
 
@@ -52,7 +55,7 @@ class RedisNode(object):
 
 
 class RedisBlock(object):
-    """Redis block that is composited with `RedisNode`.
+    """Redis block that is composited with :class:`RedisNode`.
     
     """
 
@@ -80,7 +83,7 @@ class RedisBlock(object):
 
 
 class Redispace(object):
-    """Shards data into ``RedisBlock`s and distributes operations to
-    ``RedisNode``s.
+    """Shards data into :class:`RedisBlock` and distributes operations to
+    :class:`RedisNode`.
     
     """

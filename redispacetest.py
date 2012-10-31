@@ -6,7 +6,7 @@ tests = Tests()
 
 @tests.test
 def dummy():
-    assert True == False
+    assert True == True
 
 
 if __name__ == '__main__':

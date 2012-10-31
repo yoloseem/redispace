@@ -1,7 +1,12 @@
 redispace
 =========
 
-Contents:
+Welcome to redispace_ documentation.
+
+.. _redispace: https://github.com/kimjayd/redispace
+
+API Reference
+-------------
 
 .. toctree::
    :maxdepth: 2
@@ -10,7 +15,7 @@ Contents:
 
 
 Indices and tables
-==================
+------------------
 
 * :ref:`genindex`
 * :ref:`modindex`

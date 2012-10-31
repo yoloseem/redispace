@@ -1,3 +1,10 @@
+""":mod:`redispace` --- redispace
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+redispace is a Redis client based on redis-py.
+
+"""
+
 import collections
 import itertools
 import numbers

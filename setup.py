@@ -3,7 +3,10 @@ try:
     from setuptools import setup
 except ImportError:
     from distutils.core import setup
-import redispace
+
+
+VERSION_NUMERIC = (0, 1, 0)
+VERSION = '{0}.{1}.{2}'.format(*VERSION_NUMERIC)
 
 
 def get_readme(readme='README.rst'):
@@ -20,7 +23,7 @@ setup(name='redispace',
       maintainer='Hyunjun Kim',
       maintainer_email='kim@hyunjun.kr',
       py_modules=['redispace'],
-      version=redispace.VERSION,
+      version=VERSION,
       url='https://github.com/kimjayd/redispace',
       description='implements a ``redis`` wrapper for replication and sharding',
       long_description=get_readme(),

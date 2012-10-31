@@ -4,12 +4,7 @@ import numbers
 import redis
 
 
-__slots__ = ('RedisNode', 'RedisBlock', 'RedisCluster',
-             'VERSION_NUMERIC', 'VERSION',)
-
-
-VERSION_NUMERIC = (0, 1, 0)
-VERSION = '{0}.{1}.{2}'.format(*VERSION_NUMERIC)
+__slots__ = ('RedisNode', 'RedisBlock', 'RedisCluster', )
 
 
 class RedisNode(object):

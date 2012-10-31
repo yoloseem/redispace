@@ -26,6 +26,14 @@ class RedisNode(object):
 
     def __init__(self, host='localhost', port=6379,
                  **config):
+        """
+
+        :param host: host of redis server
+        :type host: :class:`basestring`
+        :param port: port of redis server
+        :type port: :class:`numbers.Integral`
+
+        """
         if not isinstance(host, basestring):
             raise TypeError('`host` must be of `basestring`')
         if not isinstance(port, numbers.Integral):
@@ -50,6 +58,23 @@ class RedisNode(object):
         return self._client
 
     def execute(self, command, *args, **kwargs):
+        """Proxy for method of :attr:`client`.
+
+        :param command: the name of :attr:`client`'s method to call
+        :type command: :class:`basestring`
+
+        .. sourcecode:: python
+
+           node = RedisNode()
+           result = node.execute('set', 'key', 'value')
+           value = node.execute('get', 'key')
+
+           # Above code is equivalent to:
+
+           result = node.client.set('key', 'value')
+           value = node.client.get('key')
+
+        """
         f = getattr(self.client, command)
         return f(*args, **kwargs)
 

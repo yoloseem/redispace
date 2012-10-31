@@ -28,6 +28,7 @@ setup(name='redispace',
       description='implements a ``redis`` wrapper for replication and sharding',
       long_description=get_readme(),
       install_requires=['redis'],
+      extras_require={'docs': ['Sphinx']},
       classifiers=[
           'Development Status :: 1 - Planning',
           'License :: OSI Approved :: MIT License',

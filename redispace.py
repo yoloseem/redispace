@@ -119,18 +119,18 @@ class RedisBlock(object):
         self._nodes = nodes
         self._nodes_cycle = itertools.cycle(nodes.iteritems())
 
-    def _get_node_by_rotation(self, with_name=True):
+    def get_node_by_rotation(self, with_name=True):
         """Pooling :class:`RedisNode` and fetch one in turn.
 
         .. sourcecode:: pycon
 
-           >>> rb._get_node_by_rotation()
+           >>> rb.get_node_by_rotation()
            ('node_1', <redispace.RedisNode object at 0x1376990>)
-           >>> rb._get_node_by_rotation()
+           >>> rb.get_node_by_rotation()
            ('node_0', <redispace.RedisNode object at 0x1376810>)
-           >>> rb._get_node_by_rotation()
+           >>> rb.get_node_by_rotation()
            ('node_1', <redispace.RedisNode object at 0x1376990>)
-           >>> rb._get_node_by_rotation()
+           >>> rb.get_node_by_rotation()
            ('node_0', <redispace.RedisNode object at 0x1376810>)
 
         :param with_name: the boolean value whether this method returns node
@@ -154,7 +154,7 @@ class RedisBlock(object):
         :type command: :class:`basestring`
 
         """
-        name, node = self._get_node_by_rotation()
+        name, node = self.get_node_by_rotation()
         return node.execute(command, *args, **kwargs)
 
 

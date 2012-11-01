@@ -84,7 +84,7 @@ class RedisBlock(object):
     
     """
 
-    __slots__ = '_nodes', '_n_of_nodes', '_nodes_cycle',
+    __slots__ = '_nodes', '_nodes_cycle',
 
     def __init__(self, nodes):
         if isinstance(nodes, list):
@@ -93,7 +93,6 @@ class RedisBlock(object):
             raise TypeError(
                 '`nodes` must be of `list` or `collections.Mapping`')
         self._nodes = nodes
-        self._n_of_nodes = len(nodes)
         self._nodes_cycle = itertools.cycle(nodes.iteritems())
 
     def _get_node_by_rotation(self, with_name=True):

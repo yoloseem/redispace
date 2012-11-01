@@ -7,4 +7,4 @@ install:
 - python setup.py develop
 - pip install Attest
 script:
-- python redispacetest.py
+- python -mattest.run redispacetests.suite

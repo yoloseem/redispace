@@ -76,18 +76,20 @@ class RedisNode(object):
         return self._client
 
     def execute(self, command, *args, **kwargs):
-        """Proxy for method of :attr:`client`.::
+        """Proxy for method of :attr:`RedisNode.client`.
+        
+        .. sourcecode:: python
 
            node = RedisNode()
            result = node.execute('set', 'key', 'value')
            value = node.execute('get', 'key')
 
-        is equivalent to::
+           # is equivalent to:
 
            result = node.client.set('key', 'value')
            value = node.client.get('key')
 
-        :param command: the name of :attr:`client`'s method to call
+        :param command: the name of :attr:`RedisNode.client`'s method to call
         :type command: :class:`basestring`
 
         """
@@ -97,21 +99,18 @@ class RedisNode(object):
 
 class RedisBlock(object):
     """Redis block that is composited with :class:`RedisNode`.
+
+    :param nodes: the collection of :class:`RedisNode`
+    :type nodes: :class:`collections.Mapping` or :class:`list`
+
+    If :class:`list` is given for :data:`nodes`, it converts the list to
+    :class:`dict` internally.
     
     """
 
     __slots__ = '_nodes', '_nodes_cycle',
 
     def __init__(self, nodes):
-        """
-
-        :param nodes: the collection of :class:`RedisNode`
-        :type nodes: :class:`collections.Mapping` or :class:`list`
-
-        If :class:`list` is given for :data:`nodes`, it converts the list to
-        :class:`dict` internally.
-
-        """
         if isinstance(nodes, list):
             nodes = dict(('node_%d' % i, node) for i, node in enumerate(nodes))
         elif not isinstance(nodes, collections.Mapping):
@@ -121,7 +120,7 @@ class RedisBlock(object):
         self._nodes_cycle = itertools.cycle(nodes.iteritems())
 
     def _get_node_by_rotation(self, with_name=True):
-        """Pooling :class:`RedisNode` and fetch one in turn.::
+        """Pooling :class:`RedisNode` and fetch one in turn.
 
         .. sourcecode:: pycon
 
@@ -147,11 +146,11 @@ class RedisBlock(object):
         return node
 
     def execute(self, command, *args, **kwargs):
-        """Proxy for method of :attr:`client`.::
+        """Proxy for method of :attr:`RedisBlock.client`.::
 
         Same as :meth:`RedisNode.execute`.
 
-        :param command: the name of :attr:`client`'s method to call
+        :param command: the name of :attr:`RedisBlock.client`'s method to call
         :type command: :class:`basestring`
 
         """

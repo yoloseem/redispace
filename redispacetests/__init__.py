@@ -1,4 +1,4 @@
-from attest import Tests, assert_hook
+from attest import Tests
 from redispacetests import protocol
 
 

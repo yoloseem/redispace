@@ -1,5 +1,5 @@
 from attest import Tests
-from redispacetests import protocol
+from . import protocol
 
 
 suite = Tests()

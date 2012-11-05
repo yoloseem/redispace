@@ -4,9 +4,6 @@ Implements the abstract redis client proxy. The protocol it implements follows
 :class:`redis.StrictRedis`'s one.
 
 """
-import functools
-import redis
-
 
 REDIS_COMMANDS = [
     'bgrewriteaof', 'bgsave', 'client_kill', 'client_list', 'config_get',

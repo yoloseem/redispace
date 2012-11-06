@@ -8,5 +8,6 @@ suite.register(replication.suite)
 
 
 @suite.test
-def boolean():
-    assert True is not False
+def version():
+    import redispace
+    assert redispace.VERSION == '0.1.1'

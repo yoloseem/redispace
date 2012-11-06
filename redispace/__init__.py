@@ -7,3 +7,4 @@ redispace is a `Redis`_ client based on `redis-py`_.
 .. _redis-py: https://github.com/andymccurdy/redis-py
 
 """
+from .replication import RedisReplication

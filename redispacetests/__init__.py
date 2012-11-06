@@ -1,10 +1,11 @@
 from attest import Tests
-from . import protocol, replication
+from . import protocol, replication, sharding
 
 
 suite = Tests()
 suite.register(protocol.suite)
 suite.register(replication.suite)
+suite.register(sharding.suite)
 
 
 @suite.test

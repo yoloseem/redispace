@@ -9,3 +9,4 @@ redispace is a `Redis`_ client based on `redis-py`_.
 """
 from .version import VERSION
 from .replication import RedisReplication
+from .sharding import RedisRing

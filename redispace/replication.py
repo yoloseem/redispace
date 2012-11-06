@@ -25,13 +25,15 @@ class RedisReplication(RedisProtocol):
         if isinstance(nodes, list):
             nodes = dict(('node_%d' % i, node) for i, node in enumerate(nodes))
         elif not isinstance(nodes, collections.Mapping):
-            raise TypeError('`nodes` must be of `collections.Mapping`.'
-                            ' or `list`')
+            raise TypeError('`nodes` must be `collections.Mapping` or `list`.')
+        if len(nodes) == 0:
+            raise ValueError('`nodes` must contains at least one item.')
         for name, node in nodes.iteritems():
             if not isinstance(node, redis.StrictRedis):
-                raise TypeError('`nodes` must be `collections.Mapping` that is'
-                                ' composed of (`basestring`, '
-                                '`redis.StrictRedis`) pairs.')
+                raise TypeError('`nodes` must be `collections.Mapping` that '\
+                                'is composed of (`basestring`, '\
+                                '`redis.StrictRedis`) pairs or `list` of '\
+                                '`redis.StrictRedis`.')
         self._nodes = nodes
         self._nodes_cycle = itertools.cycle(nodes.iteritems())
 
